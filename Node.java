@@ -1,4 +1,4 @@
-private class Node{
+public class Node{
     private E data;
     private Node next;
     private Node prev;
@@ -34,8 +34,8 @@ private class Node{
       return data;
     }
 
-    public E setData(E i){
-      data = i;
+    public E setData(E set){
+      data = set;
       return data;
     }
 

@@ -7,7 +7,16 @@ public class MyLinkedList{
   private Node end;
 
   public String toString(){
+    String res = "[";
+    Node track = start;
 
+    while(track != null){
+      res += track.getData() + ", ";
+      track = track.next();
+    }
+
+    res += "]";
+    return res;
   }
 
   public MyLinkedList(){
@@ -25,7 +34,7 @@ public class MyLinkedList{
   //reset the list to an empty state. Very similar to the constructor.
 
   public boolean add(E){
-
+    return true;
   }
   //add an element to the end of the list (the boolean would be true all the time if you want to conform to list standards)
 
@@ -37,7 +46,8 @@ public class MyLinkedList{
   //This is how you will merge lists together for your radix sort.
 
   public E removeFront(){
-
+    E track = start.getData();
+    return track;
   }
   //remove the 1st element of the list, and return that value.
 
