@@ -4,7 +4,11 @@ import java.io.*;
 public class Radix{
 
   public static void radixsort(int[]data){
+    MyLinkedList<Integer> track = new MyLinkedList<Integer>();
 
+    for(int i = 0; i < dta.length; i++){
+      
+    }
   }
 
 }
@@ -44,4 +48,3 @@ When sorting by the ten's place they would flip to   [123, 133]
 When sorting by the hundreds place, they woudld remain in the same order. (the tens place determines the order)
 end result : [123, 133]
 */
- 
