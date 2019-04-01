@@ -29,11 +29,36 @@ public class MyLinkedList{
   }
 
   public void clear(){
-
+    len = 0;
+    start = null;
+    end = null;
   }
   //reset the list to an empty state. Very similar to the constructor.
 
   public boolean add(E){
+    Node add = new Node(value);
+
+    //empty list
+    if(len == 0){
+      start = add;
+      end = add;
+    }
+
+    //solo list
+    if(len == 1){
+      start.setNext(add);
+      end = add;
+      end.setPrev(start);
+    }
+
+    //reg list
+    if(len > 1){
+      end.setNext(add);
+      add.setPrev(end);
+      end = add;
+    }
+    
+    len ++;
     return true;
   }
   //add an element to the end of the list (the boolean would be true all the time if you want to conform to list standards)
