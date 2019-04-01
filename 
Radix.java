@@ -6,8 +6,8 @@ public class Radix{
   public static void radixsort(int[]data){
     MyLinkedList<Integer> track = new MyLinkedList<Integer>();
 
-    for(int i = 0; i < dta.length; i++){
-      
+    for(int i = 0; i < data.length; i++){
+
     }
   }
 
