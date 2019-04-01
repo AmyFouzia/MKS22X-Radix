@@ -57,25 +57,60 @@ public class MyLinkedList{
       add.setPrev(end);
       end = add;
     }
-    
+
     len ++;
     return true;
   }
   //add an element to the end of the list (the boolean would be true all the time if you want to conform to list standards)
 
   public void extend(MyLinkedList<E> other){
+    if(size() == 0){
+      start = other.start;
+      end = other.end;
+    }
 
+    else{
+      len += other.size();
+      end = other.end;
+      end.setNext(other.start);
+      other.start.setPrev(end);
+      other.len = 0;
+      other.start = null;
+      other.end = null;
+    }
   }
   //in O(1) time, connect the other list to the end of this list.
   //The other list is then reset to size 0 (do not wipe out the nodes, just disconnect them.)
   //This is how you will merge lists together for your radix sort.
 
+  private Node getNthNode(int index){
+      Node track = start;
+
+      for(int i = 0; i < index; i++){
+        track = track.next();
+      }
+
+      return track;
+  }
+
   public E removeFront(){
+    if(size() == 0){throw new NoSuchElementException();}
+
     E track = start.getData();
+
+    if(size() == 1){
+      start = null;
+      return temp;
+    }
+
+    start = getNthNode(1);
+    start.setPrev(null);
+
+    len--;
+
     return track;
   }
   //remove the 1st element of the list, and return that value.
-
-      //A working iterator would be faster than remove front for traversing the list.
+  //A working iterator would be faster than remove front for traversing the list.
 
 }
