@@ -5,7 +5,7 @@ public class MyLinkedList{
   private int len;
   private Node start;
   private Node end;
-
+ 
   public String toString(){
     String res = "[";
     Node track = start;
