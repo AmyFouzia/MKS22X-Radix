@@ -3,11 +3,17 @@ import java.io.*;
 
 public class Radix{
 
+  @SuppressWarnings("unchecked")
   public static void radixsort(int[]data){
+    MyLinkedList<Integer>[] buckets = new null[20];
     MyLinkedList<Integer> track = new MyLinkedList<Integer>();
 
     for(int i = 0; i < data.length; i++){
-
+      //put data array into buckets based on first digits
+      //merge into a linked list, track
+      //put track into buckets
+      //removeFront n times
+      //iterator
     }
   }
 
