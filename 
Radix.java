@@ -5,10 +5,12 @@ public class Radix{
 
   @SuppressWarnings("unchecked")
   public static void radixsort(int[]data){
-    MyLinkedList<Integer>[] buckets = new null[20];
+    MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
     MyLinkedList<Integer> track = new MyLinkedList<Integer>();
 
     for(int i = 0; i < data.length; i++){
+      int track = 0;
+      buckets[n*array[i]]
       //put data array into buckets based on first digits
       //merge into a linked list, track
       //put track into buckets
@@ -18,7 +20,7 @@ public class Radix{
   }
 
 }
-
+[16, -15, -5, 17, -8, -3, 2, -3, 3, 10]
 /*Radix sort should get faster when the arraySize : maxValue ratio increases.
 (More elements and smaller max value)
 
