@@ -4,12 +4,11 @@ import java.io.*;
 
 public class Radix{
 
-
   @SuppressWarnings({"unchecked", "rawtypes"})
   public static void radixsort(int[]data){
     int max = 0;
     int ind = 0;
-    int trackINT = (int)Math.log10(max) + 1;
+    int trackINT = (int)Math.log10(max) + 1; //num digits in max val
     MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
     MyLinkedList<Integer> track = new MyLinkedList<Integer>();
 
@@ -27,17 +26,19 @@ public class Radix{
       trackINT = 1;
     }
 
-    for(int x = 0; x < trackINT; x++){
+    for(int j = 0; j < trackINT; j++){
 
-      if(x == 0){
+      if(j == 0){
 
         for(int i = 0; i < data.length; i++){
           int num = data[i];
-          int digit = digit(num, x);
+          int digit = digit(num, j);
 
+          //neg num
           if(num < 0){
             buckets[9 - digit].add(num);
           }
+          //pos num
           else{
             buckets[digit + 10].add(num);
           }
@@ -46,7 +47,7 @@ public class Radix{
       else{
         while(track.size() > 0){
           int num = track.removeFront();
-          int digit = digit(num, x);
+          int digit = digit(num, j);
 
           if(num < 0){
             buckets[9 - digit].add(num);
@@ -71,7 +72,7 @@ public class Radix{
 
 
 
-  public static String printArray(int[] data){
+  public static String toString(int[] data){
     String res = "";
 
     for(int i = 0; i < data.length; i++){
