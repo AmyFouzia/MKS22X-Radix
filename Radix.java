@@ -4,6 +4,7 @@ import java.io.*;
 
 public class Radix{
 
+
   @SuppressWarnings({"unchecked", "rawtypes"})
   public static void radixsort(int[]data){
     int max = 0;
@@ -21,7 +22,54 @@ public class Radix{
         max = data[i];
       }
     }
+
+    if(max == 0){
+      trackINT = 1;
+    }
+
+    for(int x = 0; x < trackINT; x++){
+
+      if(x == 0){
+
+        for(int i = 0; i < data.length; i++){
+          int num = data[i];
+          int digit = digit(num, x);
+
+          if(num < 0){
+            buckets[9 - digit].add(num);
+          }
+          else{
+            buckets[digit + 10].add(num);
+          }
+        }
+      }
+      else{
+        while(track.size() > 0){
+          int num = track.removeFront();
+          int digit = digit(num, x);
+
+          if(num < 0){
+            buckets[9 - digit].add(num);
+          }
+          else{
+            buckets[digit + 10].add(num);
+          }
+        }
+      }
+
+      for(int j = 0; j < buckets.length; j++){
+        track.extend(buckets[j]);
+      }
+    }
+
+    while(track.size() > 0){
+      data[ind] = track.removeFront();
+      ind++;
+    }
   }
+
+
+
 
   public static String printArray(int[] data){
     String res = "";
@@ -34,7 +82,24 @@ public class Radix{
   }
 
     public static int digit(int num, int pos){
+      int mod = 0;
+      int div = 1;
 
+      if(pos == 0){
+        mod = 10;
+      }
+      else{
+        mod = (int) Math.pow(10, (pos + 1));
+      }
+
+      if(pos == 0){
+        div = 1;
+      }
+      else{
+        div = (int) Math.pow(10, pos);
+      }
+
+      return Math.abs(num % mod / div);
     }
 
 

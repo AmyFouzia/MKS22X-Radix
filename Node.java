@@ -1,8 +1,8 @@
-public class Node{
+public class Node<E>{
     private E data;
     private Node next;
     private Node prev;
- 
+
     //constructors
     public Node(E value){
       data = value;
@@ -42,8 +42,4 @@ public class Node{
     public String toString(){
       return data + "";
     }
-
   }
-
-
-}

@@ -1,11 +1,11 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedList{
+public class MyLinkedList<E>{
   private int len;
   private Node start;
   private Node end;
- 
+
   public String toString(){
     String res = "[";
     Node track = start;
@@ -35,7 +35,7 @@ public class MyLinkedList{
   }
   //reset the list to an empty state. Very similar to the constructor.
 
-  public boolean add(E){
+  public boolean add(E value){
     Node add = new Node(value);
 
     //empty list
@@ -44,15 +44,7 @@ public class MyLinkedList{
       end = add;
     }
 
-    //solo list
-    if(len == 1){
-      start.setNext(add);
-      end = add;
-      end.setPrev(start);
-    }
-
-    //reg list
-    if(len > 1){
+    else{
       end.setNext(add);
       add.setPrev(end);
       end = add;
@@ -69,44 +61,33 @@ public class MyLinkedList{
       end = other.end;
     }
 
-    else{
-      len += other.size();
-      end = other.end;
+    else if(other.size() > 0){
       end.setNext(other.start);
       other.start.setPrev(end);
-      other.len = 0;
-      other.start = null;
-      other.end = null;
+      end = other.end;
     }
+
+      len += other.len;
+      other.clear();
   }
   //in O(1) time, connect the other list to the end of this list.
   //The other list is then reset to size 0 (do not wipe out the nodes, just disconnect them.)
   //This is how you will merge lists together for your radix sort.
-
-  private Node getNthNode(int index){
-      Node track = start;
-
-      for(int i = 0; i < index; i++){
-        track = track.next();
-      }
-
-      return track;
-  }
-
+  @SuppressWarnings({"unchecked", "rawtypes"})
   public E removeFront(){
-    if(size() == 0){throw new NoSuchElementException();}
+    if(len == 0){throw new NoSuchElementException();}
 
-    E track = start.getData();
+    E track = (E)start.getData();
 
-    if(size() == 1){
-      start = null;
-      return temp;
+    if(len == 1){
+      clear();
     }
 
-    start = getNthNode(1);
-    start.setPrev(null);
-
-    len--;
+    else{
+      start = start.next();
+      start.setPrev(null);
+      len --;
+    }
 
     return track;
   }
